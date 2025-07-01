@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Usuario</title>
+</head>
+<body>
+  <h2>Registro de Nuevo Usuario</h2>
+  <form id="formulario-registro">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" required><br><br>
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" required><br><br>
+
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad" required><br><br>
+
+    <label for="genero">Género:</label>
+    <select id="genero" required>
+      <option value="">Selecciona</option>
+      <option value="Femenino">Femenino</option>
+      <option value="Masculino">Masculino</option>
+      <option value="Otro">Otro</option>
+    </select><br><br>
+
+    <label for="correo">Correo:</label>
+    <input type="email" id="correo" required><br><br>
+
+    <label for="contrasena">Contraseña:</label>
+    <input type="password" id="contrasena" required><br><br>
+
+    <label for="peso">Peso (kg):</label>
+    <input type="number" id="peso" required><br><br>
+
+    <label for="altura">Altura (cm):</label>
+    <input type="number" id="altura" required><br><br>
+
+    <label for="objetivo">Objetivo de entrenamiento:</label>
+    <select id="objetivo" required>
+      <option value="">Selecciona</option>
+      <option value="Hipertrofia">Hipertrofia</option>
+      <option value="Pérdida de grasa">Pérdida de grasa</option>
+      <option value="Aeróbico">Aeróbico</option>
+    </select><br><br>
+
+    <button type="submit">Registrarse</button>
+  </form>
+
+  <p id="mensaje-registro" style="color: green;"></p>
+
+  <script src="registro.js"></script>
+</body>
+</html>

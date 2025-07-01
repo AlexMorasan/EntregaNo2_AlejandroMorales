@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tienda del Gimnasio</title>
+</head>
+<body>
+  <h2>Tienda del Gimnasio</h2>
+
+  <section id="productos">
+    <div class="producto">
+      <img src="proteina.jpg" alt="Proteína en polvo" width="150">
+      <h3>Proteína en polvo</h3>
+      <p>Precio: $800 MXN</p>
+      <label>Cantidad: <input type="number" min="0" value="0" data-producto="proteina"></label>
+    </div>
+
+    <div class="producto">
+      <img src="playera.jpg" alt="Playera deportiva" width="150">
+      <h3>Playera deportiva</h3>
+      <p>Precio: $250 MXN</p>
+      <label>Cantidad: <input type="number" min="0" value="0" data-producto="playera"></label>
+    </div>
+
+    <div class="producto">
+      <img src="toalla.jpg" alt="Toalla con logo" width="150">
+      <h3>Toalla con logo</h3>
+      <p>Precio: $150 MXN</p>
+      <label>Cantidad: <input type="number" min="0" value="0" data-producto="toalla"></label>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="carrito">
+    <h3>Resumen del carrito</h3>
+    <ul id="lista-carrito"></ul>
+    <p><strong>Total a pagar:</strong> $<span id="total">0</span> MXN</p>
+    <button id="enviar-orden">Enviar orden de compra</button>
+  </section>
+
+  <script src="tienda.js"></script>
+</body>
+</html>
