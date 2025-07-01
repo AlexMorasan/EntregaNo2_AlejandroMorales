@@ -8,3 +8,27 @@ body{
 p{
     color: whitesmoke;
 }
+
+a{
+    color:whitesmoke;
+}
+
+label{
+    color:orangered;
+}
+
+.error{
+    color:red;
+}
+
+.exito{
+    color:green;
+}
+
+h3{
+    color:whitesmoke;
+}
+
+li{
+    color:whitesmoke;
+}
