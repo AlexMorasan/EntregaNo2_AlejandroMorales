@@ -10,6 +10,8 @@ const inputs = document.querySelectorAll('input[type="number"]');
 const listaCarrito = document.getElementById("lista-carrito");
 const totalElemento = document.getElementById("total");
 const botonOrden = document.getElementById("enviar-orden");
+const mensajeCompra = document.getElementById("mensaje-compra");
+
 
 // Escuchar cambios en las cantidades
 inputs.forEach(input => {
@@ -30,6 +32,13 @@ function actualizarCarrito() {
       const subtotal = cantidad * precio;
       total += subtotal;
       resumen += `<li>${cantidad} x ${producto} = $${subtotal} MXN</li>`;
+      Toastify({
+        text: "Producto agregado al carrito",
+        duration: 5000,
+        gravity: "bottom",
+        position: "center",
+        backgroundColor: "blue"
+      }).showToast()
     }
   });
 
@@ -40,13 +49,39 @@ function actualizarCarrito() {
 // Simular envío de orden
 botonOrden.addEventListener("click", () => {
   if (totalElemento.textContent === "0") {
-    alert("Tu carrito está vacío.");
+     //mensajeCompra.textContent = "Tu carrito está vacío";
+    Toastify({
+    text: "Tu carrito está vacío",
+    duration: 5000,
+    gravity: "bottom",
+    position: "center",
+    backgroundColor: "red"
+  }).showToast()
+    /* alert("Tu carrito está vacío."); */
     return;
   }
 
-  alert("¡Orden enviada con éxito! Gracias por tu compra.");
   // Reiniciar carrito
   inputs.forEach(input => input.value = 0);
+  //mensajeCompra.textContent = "!Tu orden fue enviada con éxito!. Podrás recoger tus artículos en la sucursal mañana. Muchas gracias por tu compra =D";
+  Toastify({
+    text: "Orden enviada con éxito. Podrás recoger tus productos mañana en tu sucursal",
+    duration: 5000,
+    gravity: "bottom",
+    position: "center",
+    backgroundColor: "green"
+
+  }).showToast()
   actualizarCarrito();
 });
 
+//Regreso al perfil
+document.getElementById("btn-perfil").addEventListener("click", () => {
+  window.location.href = "perfil.html";
+});
+
+// Cerrar sesión
+document.getElementById("btn-cerrar-sesion").addEventListener("click", () => {
+  localStorage.removeItem("usuarioActivo");
+  window.location.href = "index.html";
+});

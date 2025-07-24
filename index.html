@@ -7,7 +7,11 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2 class="titulos">Iniciar Sesión</h2>
+  <header>
+    <a class="navbar-brand LogoATP" href="#">ATP <span class="Logo2">Fitness</span></a>
+  </header>
+  <div class="login">
+      <h2 class="titulos">Iniciar Sesión</h2>
   <form id="formulario-login">
     <label for="correo">Correo:</label>
     <input type="email" id="correo" required><br><br>
@@ -18,10 +22,11 @@
     <button type="submit">Ingresar</button>
   </form>
 
-  <p>¿Eres nuevo? <a href="registro.html" id="nuevo-usuario">Crear cuenta</a></p>
-  <a href="tutorial.html">Tutorial</a>
+  <p class="Tutorial">¿Eres nuevo? <a class="Cuenta" href="registro.html" id="nuevo-usuario">Crear cuenta</a></p>
+  <a class="Tutorial" href="tutorial.html">Tutorial</a>
 
   <p id="mensaje-error" class="error"></p>
+  </div>
 
   <script src="login.js"></script>
 </body>

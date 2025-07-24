@@ -3,27 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>Tienda del Gimnasio</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Tienda del Gimnasio</h2>
-
+  <header>
+    <a class="navbar-brand LogoATP" href="#">ATP <span class="Logo2">Fitness</span></a>
+  </header>
+  <h2 class="textos">Tienda del Gimnasio</h2>
+  <nav>
+    <button id="btn-perfil">Perfil</button>
+    <button id="btn-cerrar-sesion">Cerrar sesión</button>
+  </nav>
   <section id="productos">
     <div class="producto">
-      <img src="proteina.jpg" alt="Proteína en polvo" width="150">
+      <img src="./imagenes/protein.jpg" alt="Proteína en polvo" width="150">
       <h3>Proteína en polvo</h3>
       <p>Precio: $800 MXN</p>
       <label>Cantidad: <input type="number" min="0" value="0" data-producto="proteina"></label>
     </div>
 
     <div class="producto">
-      <img src="playera.jpg" alt="Playera deportiva" width="150">
+      <img src="./imagenes/shirt.png" alt="Playera deportiva" width="150">
       <h3>Playera deportiva</h3>
       <p>Precio: $250 MXN</p>
       <label>Cantidad: <input type="number" min="0" value="0" data-producto="playera"></label>
     </div>
 
     <div class="producto">
-      <img src="toalla.jpg" alt="Toalla con logo" width="150">
+      <img src="./imagenes/towel.jpg" alt="Toalla con logo" width="150">
       <h3>Toalla con logo</h3>
       <p>Precio: $150 MXN</p>
       <label>Cantidad: <input type="number" min="0" value="0" data-producto="toalla"></label>
@@ -36,9 +44,10 @@
     <h3>Resumen del carrito</h3>
     <ul id="lista-carrito"></ul>
     <p><strong>Total a pagar:</strong> $<span id="total">0</span> MXN</p>
+    <p id="mensaje-compra" class="compra"></p>
     <button id="enviar-orden">Enviar orden de compra</button>
   </section>
-
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="tienda.js"></script>
 </body>
 </html>

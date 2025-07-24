@@ -32,3 +32,48 @@ h3{
 li{
     color:whitesmoke;
 }
+
+header .LogoATP {
+  font-size: 60px;
+  font-weight: bold;
+  color: orangered;
+}
+
+header span{
+    color:whitesmoke;
+}
+
+.login{
+    /* display: flex; */
+/*     align-content: center;
+    flex-direction: center; */
+    background-color: whitesmoke;
+    height: 230px;
+    padding: 50px;
+    width: 200px;
+    margin-left: 40%;
+}
+
+.Tutorial{
+    color:black;
+}
+
+.Cuenta{
+    color:blue;
+}
+
+.producto{
+    margin: 10px;
+}
+
+.textos{
+    color:whitesmoke;
+}
+
+.compra{
+    color:orangered;
+}
+
+h2{
+    color:whitesmoke;
+}

@@ -3,9 +3,14 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perfil de usuario</title>
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header>
+    <a class="navbar-brand LogoATP" href="#">ATP <span class="Logo2">Fitness</span></a>
+  </header>
   <!-- Navegación principal -->
   <nav>
     <button id="btn-perfil">Perfil</button>
@@ -14,7 +19,7 @@
   </nav>
 
   <main>
-    <h2 id="saludo-usuario">Bienvenido</h2>
+    <h2 id="saludo-usuario">Bienvenido/a</h2>
 
     <!-- Acciones del usuario -->
     <section id="acciones-usuario">
@@ -24,6 +29,7 @@
 
     <!-- Contenido dinámico -->
     <div id="contenido-dinamico"></div>
+    <div id="calendario"></div>
   </main>
 
   <script src="perfil.js"></script>
