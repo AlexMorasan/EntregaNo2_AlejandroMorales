@@ -1,37 +1,126 @@
+/* // Mostrar mensaje en el login
+function mostrarMensajeLogin(texto, color = "red") {
+  const mensaje = document.getElementById("mensaje-login");
+  mensaje.style.color = color;
+  mensaje.textContent = texto;
+}
 
-document.getElementById("nuevo-usuario").addEventListener("click", function(e) {
+// Obtener usuarios del JSON
+async function obtenerUsuariosJSON() {
+  try {
+    const respuesta = await fetch("usuariosjson.json");
+    const datos = await respuesta.json();
+    console.log("Usuarios desde JSON:",datos);
+    return Array.isArray(datos) ? datos : []; // Asegura que sea un array
+  } catch (error) {
+    console.error("Error al cargar usuarios del JSON:", error);
+    return [];
+  }
+}
+
+// Obtener usuarios del LocalStorage
+function obtenerUsuariosLocal() {
+  const datos = JSON.parse(localStorage.getItem("usuarios"));
+  console.log("Usuarios desde LocalStorage:",datos);
+  return Array.isArray(datos) ? datos : [];
+}
+
+// Unir usuarios de ambas fuentes
+async function obtenerTodosLosUsuarios() {
+  const usuariosJSON = await obtenerUsuariosJSON();
+  const usuariosLocal = obtenerUsuariosLocal();
+  return [...usuariosJSON, ...usuariosLocal];
+}
+
+// Validar credenciales
+function validarCredenciales(usuarios, correo, contrasena) {
+  return usuarios.find(
+    usuario => usuario.correo === correo && usuario.contrasena === contrasena
+  );
+}
+
+// Evento del formulario de login
+
+obtenerUsuariosJSON();
+obtenerUsuariosLocal();
+
+document.getElementById("formulario-login").addEventListener("submit", async function(e) {
   e.preventDefault();
-  // Redirigir al formulario de registro
-  window.location.href = "registro.html";
-});
 
-document.getElementById("formulario-login").addEventListener("submit", function (e) {
+  const correo = document.getElementById("correo-login").value.trim();
+  const contrasena = document.getElementById("contrasena-login").value;
+
+  const todosLosUsuarios = await obtenerTodosLosUsuarios();
+  console.log(todosLosUsuarios);
+  const usuarioEncontrado = validarCredenciales(todosLosUsuarios, correo, contrasena);
+
+  if (usuarioEncontrado) {
+    localStorage.setItem("usuarioActivo", JSON.stringify(usuarioEncontrado));
+    mostrarMensajeLogin("Inicio de sesión exitoso. Redirigiendo...", "green");
+    setTimeout(() => {
+      window.location.href = "perfil.html";
+    }, 2000);
+  } else {
+    mostrarMensajeLogin("Correo o contraseña incorrectos.");
+  }
+}); */
+
+// Mostrar mensaje en el login
+function mostrarMensajeLogin(texto, color = "red") {
+  const mensaje = document.getElementById("mensaje-login");
+  mensaje.style.color = color;
+  mensaje.textContent = texto;
+}
+
+// Obtener usuarios del JSON
+async function obtenerUsuariosJSON() {
+  try {
+    const respuesta = await fetch("usuariosjson.json");
+    const datos = await respuesta.json();
+    console.log("Usuarios desde JSON:", datos);
+    return Array.isArray(datos) ? datos : []; // Asegura que sea un array
+  } catch (error) {
+    console.error("Error al cargar usuarios del JSON:", error);
+    return [];
+  }
+}
+
+// Obtener usuarios del LocalStorage
+function obtenerUsuariosLocal() {
+  const datos = JSON.parse(localStorage.getItem("usuarios"));
+  console.log("Usuarios desde LocalStorage:", datos);
+  return Array.isArray(datos) ? datos : [];
+}
+
+// Validar credenciales
+function validarCredenciales(usuarios, correo, contrasena) {
+  return usuarios.find(
+    usuario => usuario.correo === correo && usuario.contrasena === contrasena
+  );
+}
+
+// Evento del formulario de login
+document.getElementById("formulario-login").addEventListener("submit", async function(e) {
   e.preventDefault();
 
-  const correo = document.getElementById("correo").value.trim().toLowerCase();
-  const contrasena = document.getElementById("contrasena").value;
-  const mensajeError = document.getElementById("mensaje-error");
+  const correo = document.getElementById("correo-login").value.trim();
+  const contrasena = document.getElementById("contrasena-login").value;
 
-  fetch("usuarios.json")
-    .then(response => response.json())
-    .then(usuarios => {
-      const usuarioValido = usuarios.find(usuario =>
-        usuario.correo.toLowerCase() === correo &&
-        usuario.contrasena === contrasena
-      );
+  const usuariosJSON = await obtenerUsuariosJSON();       
+  const usuariosLocal = obtenerUsuariosLocal();        
 
-      if (usuarioValido) {
-        mensajeError.textContent = "";
-        alert(`¡Bienvenido/a ${usuarioValido.nombre}!`);
-        localStorage.setItem("usuarioActivo", JSON.stringify(usuarioValido));
-        // Redireccionar a otra página, si quieres:
-          window.location.href = "perfil.html";
-      } else {
-        mensajeError.textContent = "Correo o contraseña incorrectos.";
-      }
-    })
-    .catch(error => {
-      console.error("Error al cargar el JSON:", error);
-      mensajeError.textContent = "No se pudo acceder a la base de datos.";
-    });
+  const usuarioJSON = validarCredenciales(usuariosJSON, correo, contrasena);
+  const usuarioLocal = validarCredenciales(usuariosLocal, correo, contrasena);
+
+  const usuarioEncontrado = usuarioJSON || usuarioLocal;
+
+  if (usuarioEncontrado) {
+    localStorage.setItem("usuarioActivo", JSON.stringify(usuarioEncontrado));
+    mostrarMensajeLogin("Inicio de sesión exitoso. Redirigiendo...", "green");
+    setTimeout(() => {
+      window.location.href = "perfil.html";
+    }, 2000);
+  } else {
+    mostrarMensajeLogin("Correo o contraseña incorrectos.");
+  }
 });
